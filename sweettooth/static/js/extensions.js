@@ -103,7 +103,9 @@ function($, messages, dbusProxy, extensionUtils, templates) {
                 dbusProxy.InstallExtension(uuid).done(function(result) {
                     if (result === 'cancelled') {
                         // WELP. We can't really do anything except leave the
-                        // thing uninstalled.
+                        // thing uninstalled and explain the situation.
+                        messages.addInfo("The previous version of this extension has been uninstalled but the upgrade has been cancelled. This extension is not installed anymore.");
+
                         $switch.switchify('activate', false);
                     }
                 });
